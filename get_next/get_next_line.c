@@ -20,7 +20,7 @@ static char	*whole_line(int fd, char *buf, char *backup)
 		backup = ft_strjoin(char_temp, buf);
 		free(char_temp);
 		char_temp = NULL;
-		if (ft_strchr(buf, '\n')
+		if (ft_strrchr(buf, '\n'))
 			break ;
 	}
 	return (backup);

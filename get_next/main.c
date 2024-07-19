@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include "get_next_line.h"
+#include <fcntl.h>  // for O_RDONLY
+#include <unistd.h> // for close
+#include <stdlib.h>
 
 int main()
 {
