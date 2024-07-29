@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*ft_strchr(const char *s, int c)
 {
@@ -82,18 +82,18 @@ char	*get_next_line(int fd)
 {
 	char		*line;
 	char		*buf;
-	static char	*backup;
+	static char	*backup[OPEN_MAX];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buf = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buf)
 		return (NULL);
-	line = function(fd, buf, backup);
+	line = function(fd, buf, backup[fd]);
 	free(buf);
 	buf = NULL;
 	if (!line)
 		return (NULL);
-	backup = extract(line);
+	backup[fd] = extract(line);
 	return (line);
 }
